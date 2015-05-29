@@ -529,6 +529,7 @@ void xf_DestroyDesktopWindow(xfContext* xfc, xfWindow* window)
 void xf_SetWindowStyle(xfContext* xfc, xfAppWindow* appWindow, UINT32 style, UINT32 ex_style)
 {
 	Atom window_type;
+
 	if ((ex_style & WS_EX_TOPMOST) || (ex_style & WS_EX_TOOLWINDOW))
 	{
 		/*
@@ -857,8 +858,8 @@ void xf_ShowWindow(xfContext* xfc, xfAppWindow* appWindow, BYTE state)
 	XFlush(xfc->display);
 }
 
-
-/*void xf_SetWindowIcon(xfContext* xfc, xfAppWindow* appWindow, rdpIcon* icon)
+#if 0
+void xf_SetWindowIcon(xfContext* xfc, xfAppWindow* appWindow, rdpIcon* icon)
 {
 	int x, y;
 	int pixels;
@@ -892,8 +893,8 @@ void xf_ShowWindow(xfContext* xfc, xfAppWindow* appWindow, BYTE state)
 	XFlush(xfc->display);
 
 	free(propdata);
-}*/
-
+}
+#endif
 
 void xf_SetWindowRects(xfContext* xfc, xfAppWindow* appWindow, RECTANGLE_16* rects, int nrects)
 {

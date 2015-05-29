@@ -147,6 +147,10 @@ void shadow_client_context_free(freerdp_peer* peer, rdpShadowClient* client)
 		shadow_encoder_free(client->encoder);
 		client->encoder = NULL;
 	}
+
+	shadow_client_encomsp_uninit(client);
+
+	shadow_client_remdesk_uninit(client);
 }
 
 void shadow_client_message_free(wMessage* message)
@@ -441,6 +445,7 @@ int shadow_client_send_surface_bits(rdpShadowClient* client, rdpShadowSurface* s
 		cmd.bpp = 32;
 		cmd.width = surface->width;
 		cmd.height = surface->height;
+		cmd.skipCompression = TRUE;
 
 		if (numMessages > 0)
 			messageRects = messages[0].rects;
